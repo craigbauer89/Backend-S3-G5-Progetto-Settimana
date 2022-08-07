@@ -1,5 +1,6 @@
 package services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -196,6 +197,24 @@ public class CatalogElementoDAO {
 			return query.getResultList();
 		} catch (Exception e) {
 			log.error("Error retrieving areas", e);
+			return new ArrayList<>();
+		} finally {
+			em.close();
+		}
+	}
+	
+	
+	
+	public static List<CatalogElemento> ricercaPrestitoPerTessera(String tessera, LocalDate today) {
+		EntityManager em = EntityManagerHelper.getEntityManager();
+		try {
+			log.debug("ricercaPrestitoPerTessera({})", tessera);
+			var query = em.createNamedQuery("CatalogElemento.SELECT_ELEMENTO_BY_TESSERA", CatalogElemento.class);
+			query.setParameter("tessera", tessera);
+			query.setParameter("today", today);
+			return query.getResultList();
+		} catch (Exception e) {
+			log.error("Error retrieving cities by province acronym", e);
 			return new ArrayList<>();
 		} finally {
 			em.close();

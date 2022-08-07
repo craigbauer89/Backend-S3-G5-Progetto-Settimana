@@ -23,7 +23,7 @@ import javax.persistence.Table;
 	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_ISBN", query = "SELECT c FROM CatalogElemento c WHERE c.codiceISBN.codiceISBN = :sigla")
 	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_ANNO", query = "SELECT c FROM CatalogElemento c WHERE c.annoPubblicato.annoPubblicato = :anno")
 	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_TITOLO", query = "SELECT c FROM CatalogElemento c WHERE c.titolo.titolo LIKE :titolo")
-	
+	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_TESSERA", query = "SELECT c FROM CatalogElemento c WHERE c.prestito IN(SELECT p FROM Prestito p WHERE p.utente IN(SELECT u FROM Utente u WHERE u.numeroTessera = :tessera) AND p.restituzionePrestito > :today) ")
 
 		public abstract class CatalogElemento { //implements  {
 			

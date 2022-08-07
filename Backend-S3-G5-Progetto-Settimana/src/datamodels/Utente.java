@@ -4,10 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "utente")
+//@NamedQuery(name = "Utente.SELECT_ELEMENTO_BY_TESSERA", query = "SELECT u FROM Utente u JOIN  p.prestito u WHERE u.tessera = :tessera")
 public class Utente {
 	
 	private int id;

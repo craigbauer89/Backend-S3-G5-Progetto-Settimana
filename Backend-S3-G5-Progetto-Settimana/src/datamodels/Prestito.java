@@ -1,5 +1,10 @@
 package datamodels;
 
+
+import java.util.Date;
+
+
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -9,12 +14,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "prestiti")
+//@NamedQuery(name = "Prestito.SELECT_ELEMENTO_BY_TESSERA", 
+//query = "SELECT p FROM Prestito p WHERE p.restituzionePrestito > :today ")
 public class Prestito {
 	
 	private int id;

@@ -52,11 +52,11 @@ public static void main(String[] args) {
 	//Aggiunte di un Prestito
 	List<Prestito> prestiti = new ArrayList<>();
 
-	prestiti.add(new Prestito(utenti.get(1), LocalDate.of(2022, 01, 26) , LocalDate.of(2022, 02, 26), LocalDate.of(2022, 02, 24) ));
-	prestiti.add(new Prestito(utenti.get(2), LocalDate.of(2021, 01, 11) , LocalDate.of(2021, 02, 10) , LocalDate.of(2021, 05, 10) ));
-	prestiti.add(new Prestito(utenti.get(3), LocalDate.of(2022, 06, 17) , LocalDate.of(2022, 07, 17) , LocalDate.of(2022, 07, 17) ));
-	prestiti.add(new Prestito(utenti.get(4), LocalDate.of(2022, 03, 04) , LocalDate.of(2022, 04, 03) , LocalDate.of(2022, 07, 04) ));
-	prestiti.add(new Prestito(utenti.get(5), LocalDate.of(2022, 06, 24) , LocalDate.of(2022, 07, 24) , LocalDate.of(2022, 07, 22) ));
+	prestiti.add(new Prestito(utenti.get(1), LocalDate.of(2022, 1, 26) , LocalDate.of(2022, 2, 26), LocalDate.of(2022, 2, 24) ));
+	prestiti.add(new Prestito(utenti.get(2), LocalDate.of(2021, 1, 11) , LocalDate.of(2021, 2, 10) , LocalDate.of(2099, 5, 10) ));
+	prestiti.add(new Prestito(utenti.get(3), LocalDate.of(2022, 6, 17) , LocalDate.of(2022, 7, 17) , LocalDate.of(2099, 7, 17) ));
+	prestiti.add(new Prestito(utenti.get(4), LocalDate.of(2022, 7, 11) , LocalDate.of(2022, 8, 10) , LocalDate.of(2022, 7, 4) ));
+	prestiti.add(new Prestito(utenti.get(5), LocalDate.of(2022, 7, 24) , LocalDate.of(2022, 8, 23) , LocalDate.of(2022, 10, 22) ));
 	
 	
 	for (int i = 0; i < prestiti.size(); i ++) {
@@ -121,15 +121,22 @@ public static void main(String[] args) {
 		log.info("Elenco degli 	elementi simile ad un titolo particolare");
 		var titolo = CatalogElementoDAO.ricercaPerTitolo("A%");
 		log.info("I elementi sono {}", titolo.size());
-		titolo.stream().forEach(c -> log.info("Il elemento di titolo che inizia con un A: {}", c));
+		titolo.stream().forEach(c -> log.info("I elementi di titolo che inizia con un A: {}", c));
 		
 //		7. Ricerca degli elementi attualmente in prestito dato un numero di tessera utente
 //		log.info("Elenco degli 	elementi attualmente in prestito dato un numero di tessera utente");
-		
-		
+//		var tessera = PrestitoDAO.ricercaPrestitoPerTessera(LocalDate.now());
+//		log.info("I elementi sono {}", tessera.size());
+//		tessera.stream().forEach(c -> log.info("Il elementi attualmente in prestito per la tessera BR827267 {}", c));
+		log.info("Elenco degli 	elementi attualmente in prestito dato un numero di tessera utente");
+		var tessera = CatalogElementoDAO.ricercaPrestitoPerTessera("BR209373", LocalDate.now());
+		log.info("I elementi sono {}", tessera.size());
+		tessera.stream().forEach(c -> log.info("Il elementi attualmente in prestito per la tessera BR209373: {}", c));
 //		8. Ricerca di tutti i prestiti scaduti e non ancora restituiti
 //		log.info("Elenco dei prestiti scaduti e non ancora restituiti");
 		
+	
+}
 		
 //		service.getAreas().forEach(a -> log.info("{}", a));
 //		log.info("Città in archivio: {} ", service.getCities().size());
@@ -146,4 +153,4 @@ public static void main(String[] args) {
 		
 		
 }
-}
+
