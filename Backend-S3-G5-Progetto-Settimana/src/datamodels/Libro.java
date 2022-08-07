@@ -1,10 +1,12 @@
 package datamodels;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "libri")
+@NamedQuery(name = "Libro.SELECT_ELEMENTO_BY_AUTORE", query = "SELECT c FROM Libro c WHERE c.autore = :autore")
 public class Libro extends CatalogElemento {
 	
 	

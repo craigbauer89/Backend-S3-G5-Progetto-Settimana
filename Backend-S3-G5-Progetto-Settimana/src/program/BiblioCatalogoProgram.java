@@ -99,20 +99,29 @@ public static void main(String[] args) {
 		
 //		3. Ricerca per ISBN
 		log.info("Il elemento dato un ISBN particolare");
-		var l = CatalogElementoDAO.ricercaPerISBN("122");
-		log.info("Il elementi sono {}", l.size());
-		l.stream().forEach(c -> log.info("Il elemento di ISBN 122: {}", c));
+		var isbn = CatalogElementoDAO.ricercaPerISBN("122");
+		log.info("I elementi sono {}", isbn.size());
+		isbn.stream().forEach(c -> log.info("Il elemento di ISBN 122: {}", c));
 
 		
 //		4. Ricerca per anno pubblicazione
-//		log.info("Elenco degli 	elementi di un anno particolare");
+		log.info("Elenco degli 	elementi di un anno particolare");
+		var anno = CatalogElementoDAO.ricercaPerAnno(2022);
+		log.info("I elementi sono {}", anno.size());
+		anno.stream().forEach(c -> log.info("Il elemento di Anno 2022: {}", c));
 		
 //		5. Ricerca per autore
-//		log.info("Elenco degli 	elementi di un autore particolare");
+		log.info("Elenco degli 	elementi di un autore particolare");
+		var autore = CatalogElementoDAO.ricercaPerAutore("Marco Bruno");
+		log.info("I elementi sono {}", autore.size());
+		autore.stream().forEach(c -> log.info("Il elemento di Anno 2022: {}", c));
 		
 	
 //		6. Ricerca per titolo o parte di esso
-//		log.info("Elenco degli 	elementi simile ad un titolo particolare");
+		log.info("Elenco degli 	elementi simile ad un titolo particolare");
+		var titolo = CatalogElementoDAO.ricercaPerTitolo("A%");
+		log.info("I elementi sono {}", titolo.size());
+		titolo.stream().forEach(c -> log.info("Il elemento di titolo che inizia con un A: {}", c));
 		
 //		7. Ricerca degli elementi attualmente in prestito dato un numero di tessera utente
 //		log.info("Elenco degli 	elementi attualmente in prestito dato un numero di tessera utente");

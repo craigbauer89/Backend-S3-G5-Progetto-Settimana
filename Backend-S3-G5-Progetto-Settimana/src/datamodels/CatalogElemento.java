@@ -1,8 +1,8 @@
 package datamodels;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+//import javax.persistence.FetchType;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,12 +15,15 @@ import javax.persistence.Table;
 
 
 
+
 	@Entity
 	@Inheritance(strategy = InheritanceType.JOINED)
 	@Table(name = "catologoItems")
 	@NamedQuery(name = "CatalogElemento.SELECT_ALL_QUERY", query = "SELECT c FROM CatalogElemento c")
 	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_ISBN", query = "SELECT c FROM CatalogElemento c WHERE c.codiceISBN.codiceISBN = :sigla")
-//	@NamedQuery(name = City.SELECT_CITY_BY_PROV_NAME, query = "SELECT c FROM City c WHERE c.province.acronym = :sigla AND c.name LIKE :name")
+	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_ANNO", query = "SELECT c FROM CatalogElemento c WHERE c.annoPubblicato.annoPubblicato = :anno")
+	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_TITOLO", query = "SELECT c FROM CatalogElemento c WHERE c.titolo.titolo LIKE :titolo")
+	
 
 		public abstract class CatalogElemento { //implements  {
 			

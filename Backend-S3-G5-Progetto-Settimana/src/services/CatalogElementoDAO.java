@@ -137,6 +137,56 @@ public class CatalogElementoDAO {
 		}
 	}
 	
+	
+	public static List<CatalogElemento> ricercaPerAnno(int anno) {
+		EntityManager em = EntityManagerHelper.getEntityManager();
+		try {
+			log.debug("ricercaPerAnno({})", anno);
+			var query = em.createNamedQuery("CatalogElemento.SELECT_ELEMENTO_BY_ANNO", CatalogElemento.class);
+			query.setParameter("anno", anno);
+			return query.getResultList();
+		} catch (Exception e) {
+			log.error("Error retrieving cities by province acronym", e);
+			return new ArrayList<>();
+		} finally {
+			em.close();
+		}
+	}
+	
+	public static List<Libro> ricercaPerAutore(String autore) {
+		EntityManager em = EntityManagerHelper.getEntityManager();
+		try {
+			log.debug("ricercaPerAutore({})", autore);
+			var query = em.createNamedQuery("Libro.SELECT_ELEMENTO_BY_AUTORE", Libro.class);
+			query.setParameter("autore", autore);
+			return query.getResultList();
+		} catch (Exception e) {
+			log.error("Error retrieving cities by province acronym", e);
+			return new ArrayList<>();
+		} finally {
+			em.close();
+		}
+		
+	}
+	
+		public static List<CatalogElemento> ricercaPerTitolo(String titolo) {
+			EntityManager em = EntityManagerHelper.getEntityManager();
+			try {
+				log.debug("ricercaPerTitolo({})", titolo);
+				var query = em.createNamedQuery("CatalogElemento.SELECT_ELEMENTO_BY_TITOLO", CatalogElemento.class);
+				query.setParameter("titolo", titolo);
+				return query.getResultList();
+			} catch (Exception e) {
+				log.error("Error retrieving cities by province acronym", e);
+				return new ArrayList<>();
+			} finally {
+				em.close();
+			}
+		}
+	
+	
+	
+	
 
 	
 	public static List<CatalogElemento> getItems() {
