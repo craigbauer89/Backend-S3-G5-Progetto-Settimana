@@ -1,42 +1,52 @@
 package datamodels;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+
 
 
 	@Entity
 	@Inheritance(strategy = InheritanceType.JOINED)
 	@Table(name = "catologoItems")
+	@NamedQuery(name = "CatalogElemento.SELECT_ALL_QUERY", query = "SELECT c FROM CatalogElemento c")
+	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_ISBN", query = "SELECT c FROM CatalogElemento c WHERE c.codiceISBN.codiceISBN = :sigla")
+//	@NamedQuery(name = City.SELECT_CITY_BY_PROV_NAME, query = "SELECT c FROM City c WHERE c.province.acronym = :sigla AND c.name LIKE :name")
 
 		public abstract class CatalogElemento { //implements  {
 			
-			private int id;
+//			private int id;
 			private String codiceISBN;
 			private String titolo;
 			private int annoPubblicato;
 			private int numeroPagine;
 			private Prestito prestito;
 			
-			public CatalogElemento(int id, String codiceISBN, String titolo, int annoPubblicato, int numeroPagine) {
-				this.id = id;
-				this.codiceISBN = codiceISBN;
-				this.titolo = titolo;
-				this.annoPubblicato = annoPubblicato;
-				this.numeroPagine = numeroPagine;
-				
-			}
+//			public CatalogElemento(int id, String codiceISBN, String titolo, int annoPubblicato, int numeroPagine, Prestito prestito) {
+//				this.id = id;
+//				this.codiceISBN = codiceISBN;
+//				this.titolo = titolo;
+//				this.annoPubblicato = annoPubblicato;
+//				this.numeroPagine = numeroPagine;
+//				this.prestito = prestito;
+//				
+//			}
 			
-			public CatalogElemento(String codiceISBN, String titolo, int annoPubblicato, int numeroPagine) {
+			public CatalogElemento(String codiceISBN, String titolo, int annoPubblicato, int numeroPagine, Prestito prestito) {
 				this.codiceISBN = codiceISBN;
 				this.titolo = titolo;
 				this.annoPubblicato = annoPubblicato;
 				this.numeroPagine = numeroPagine;
+				this.prestito = prestito;
 				
 			}
 			
@@ -44,16 +54,16 @@ import javax.persistence.Table;
 
 			}
 			
+			
+//			public int getId() {
+//				return id;
+//			}
+//
+//			public void setId(int id) {
+//				this.id = id;
+//			}
 			@Id
-			@GeneratedValue(strategy = GenerationType.IDENTITY)
-			public int getId() {
-				return id;
-			}
-
-			public void setId(int id) {
-				this.id = id;
-			}
-
+//			@GeneratedValue(strategy = GenerationType.IDENTITY)
 			public String getCodiceISBN() {
 				return codiceISBN;
 			}
@@ -86,7 +96,7 @@ import javax.persistence.Table;
 				this.numeroPagine = numeroPagine;
 			}
 
-			@ManyToOne 
+			@ManyToOne
 			public Prestito getPrestito() {
 				return prestito;
 			}
@@ -95,11 +105,18 @@ import javax.persistence.Table;
 				this.prestito = prestito;
 			}
 
+//			@Override
+//			public String toString() {
+//				return String.format(
+//						"CatologoItem [id=%s, codiceISBN=%s, titolo=%s, annoPubblicato=%s, numeroPagine=%s, prestito=%s]",
+//						id, codiceISBN, titolo, annoPubblicato, numeroPagine, prestito);
+//			}
+			
 			@Override
 			public String toString() {
 				return String.format(
-						"CatologoItem [id=%s, codiceISBN=%s, titolo=%s, annoPubblicato=%s, numeroPagine=%s, prestito=%s]",
-						id, codiceISBN, titolo, annoPubblicato, numeroPagine, prestito);
+						"CatologoItem [codiceISBN=%s, titolo=%s, annoPubblicato=%s, numeroPagine=%s, prestito=%s]",
+						codiceISBN, titolo, annoPubblicato, numeroPagine, prestito);
 			}
 
 		

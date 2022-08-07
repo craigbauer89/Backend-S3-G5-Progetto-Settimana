@@ -11,17 +11,17 @@ public class Libro extends CatalogElemento {
 	private String autore;
 	private String genere;
 	
-	public Libro(String codiceISBN, String titolo, int annoPubblicato, int numeroPagine,
+	public Libro(String codiceISBN, String titolo, int annoPubblicato, int numeroPagine, Prestito prestito,
 			String autore, String genere) {
-		super(codiceISBN, titolo, annoPubblicato, numeroPagine);
+		super(codiceISBN, titolo, annoPubblicato, numeroPagine, prestito);
 		this.autore = autore;
 		this.genere = genere;
 	}
 	
-//	
-//	public Libro(int id, String codiceISBN, String titolo, int annoPubblicato, int numeroPagine,
+	
+//	public Libro(int id, String codiceISBN, String titolo, int annoPubblicato, int numeroPagine,Prestito prestito,
 //			String autore, String genere) {
-//		super(id, codiceISBN, titolo, annoPubblicato, numeroPagine);
+//		super(id, codiceISBN, titolo, annoPubblicato, numeroPagine, prestito);
 //		this.autore = autore;
 //		this.genere = genere;
 //	}
@@ -51,10 +51,15 @@ public class Libro extends CatalogElemento {
 		this.genere = genere;
 	}
 
+
 	@Override
 	public String toString() {
-		return String.format("Libro [autore=%s, genere=%s]",super.toString(), autore, genere);
+		return String.format(
+				"Libro [autore=%s, genere=%s, getCodiceISBN()=%s, getTitolo()=%s, getAnnoPubblicato()=%s, getNumeroPagine()=%s, getPrestito()=%s, toString()=%s, getClass()=%s, hashCode()=%s]",
+				autore, genere, getCodiceISBN(), getTitolo(), getAnnoPubblicato(), getNumeroPagine(), getPrestito(),
+				super.toString(), getClass(), hashCode());
 	}
+
 
 
 	

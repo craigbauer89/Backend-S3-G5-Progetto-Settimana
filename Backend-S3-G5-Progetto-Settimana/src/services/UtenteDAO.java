@@ -9,8 +9,8 @@ public class UtenteDAO {
 
 
 	
-	public static void inserisci(int id,String nome, String cognome, int dataNascita, String numeroTessera) {
-		Utente u = new Utente( id, nome,  cognome,  dataNascita,  numeroTessera );  
+	public static void inserisci(String nome, String cognome, int dataNascita, String numeroTessera) {
+		Utente u = new Utente(nome,  cognome,  dataNascita,  numeroTessera );  
 		inserisci(u);
 	}
 

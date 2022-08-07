@@ -1,6 +1,7 @@
 package services;
 
-import java.util.Date;
+import java.time.LocalDate;
+
 
 import javax.persistence.EntityManager;
 
@@ -13,9 +14,9 @@ public class PrestitoDAO {
 	
 	
 
-	public static void inserisci(int id, Utente utente, Date inizioPrestito, Date restituzionePrestito,
-			Date restituzioneEffettiva) {
-		Prestito p = new Prestito(id,  utente,  inizioPrestito,  restituzionePrestito,
+	public static void inserisci(Utente utente, LocalDate inizioPrestito, LocalDate restituzionePrestito,
+			LocalDate restituzioneEffettiva) {
+		Prestito p = new Prestito(utente,  inizioPrestito,  restituzionePrestito,
 				 restituzioneEffettiva );  
 		inserisci(p);
 	}

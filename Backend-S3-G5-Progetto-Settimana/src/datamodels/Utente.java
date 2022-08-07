@@ -25,6 +25,14 @@ public class Utente {
 		this.numeroTessera = numeroTessera;
 	}
 	
+	public Utente(String nome, String cognome, int dataNascita, String numeroTessera) {
+		
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataNascita = dataNascita;
+		this.numeroTessera = numeroTessera;
+	}
+	
 	
 	public Utente() {
 

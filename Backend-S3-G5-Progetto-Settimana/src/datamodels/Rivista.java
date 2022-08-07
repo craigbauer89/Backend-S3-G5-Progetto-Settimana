@@ -1,6 +1,8 @@
 package datamodels;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 @Entity
@@ -9,22 +11,22 @@ public class Rivista extends CatalogElemento {
 
 	private Period period;
 	
-	public Rivista(String codiceISBN, String titolo, int annoPubblicato, int numeroPagine, 
+	public Rivista(String codiceISBN, String titolo, int annoPubblicato, int numeroPagine, Prestito prestito,
 			Period period) {
-		super(codiceISBN, titolo, annoPubblicato, numeroPagine);
+		super(codiceISBN, titolo, annoPubblicato, numeroPagine,  prestito);
 		this.period = period;
 	}
 	
-	public Rivista(int id, String codiceISBN, String titolo, int annoPubblicato, int numeroPagine, 
-			Period period) {
-		super(id, codiceISBN, titolo, annoPubblicato, numeroPagine);
-		this.period = period;
-	}
+//	public Rivista(int id, String codiceISBN, String titolo, int annoPubblicato, int numeroPagine, Prestito prestito,
+//			Period period) {
+//		super(id, codiceISBN, titolo, annoPubblicato, numeroPagine, prestito);
+//		this.period = period;
+//	}
 
 	public Rivista() {
 		super();
 	}
-
+	@Enumerated(EnumType.STRING)
 	public Period getPeriod() {
 		return period;
 	}
@@ -33,11 +35,16 @@ public class Rivista extends CatalogElemento {
 		this.period = period;
 	}
 
-
 	@Override
 	public String toString() {
-		return String.format("Rivista [period=%s]",super.toString(), period);
+		return String.format(
+				"Rivista [period=%s, getCodiceISBN()=%s, getTitolo()=%s, getAnnoPubblicato()=%s, getNumeroPagine()=%s, getPrestito()=%s, toString()=%s, getClass()=%s, hashCode()=%s]",
+				period, getCodiceISBN(), getTitolo(), getAnnoPubblicato(), getNumeroPagine(), getPrestito(),
+				super.toString(), getClass(), hashCode());
 	}
+
+
+	
 
 	
 

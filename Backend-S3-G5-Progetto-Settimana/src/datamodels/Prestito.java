@@ -1,10 +1,11 @@
 package datamodels;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,19 +20,28 @@ public class Prestito {
 	private int id;
 	private Utente utente;
 	private List<CatalogElemento> catologoItem;
-	private Date inizioPrestito;
-	private Date restituzionePrestito; // (calcolata automaticamente a 30 gg dalla data inizio prestito)
-	private Date restituzioneEffettiva;
+	private LocalDate inizioPrestito;
+	private LocalDate restituzionePrestito; // (calcolata automaticamente a 30 gg dalla data inizio prestito)
+	private LocalDate restituzioneEffettiva;
 	
 	
-	public Prestito(int id, Utente utente, Date inizioPrestito, Date restituzionePrestito,
-			Date restituzioneEffettiva) {
+	public Prestito(int id, Utente utente, LocalDate inizioPrestito, LocalDate restituzionePrestito,
+			LocalDate restituzioneEffettiva) {
 		this.id = id;
 		this.utente = utente;
 		this.inizioPrestito = inizioPrestito;
 		this.restituzionePrestito = restituzionePrestito;
 		this.restituzioneEffettiva = restituzioneEffettiva;
 	}
+	
+	public Prestito(Utente utente, LocalDate inizioPrestito, LocalDate restituzionePrestito,
+			LocalDate restituzioneEffettiva) {
+		this.utente = utente;
+		this.inizioPrestito = inizioPrestito;
+		this.restituzionePrestito = restituzionePrestito;
+		this.restituzioneEffettiva = restituzioneEffettiva;
+	}
+
 
 	public Prestito() {
 		
@@ -66,36 +76,36 @@ public class Prestito {
 		this.catologoItem = catologoItem;
 	}
 
-	public Date getInizioPrestito() {
+	public LocalDate getInizioPrestito() {
 		return inizioPrestito;
 	}
 
-	public void setInizioPrestito(Date inizioPrestito) {
+	public void setInizioPrestito(LocalDate inizioPrestito) {
 		this.inizioPrestito = inizioPrestito;
 	}
 
-	public Date getRestituzionePrestito() {
+	public LocalDate getRestituzionePrestito() {
 		return restituzionePrestito;
 	}
 
-	public void setRestituzionePrestito(Date restituzionePrestito) {
+	public void setRestituzionePrestito(LocalDate restituzionePrestito) {
 		this.restituzionePrestito = restituzionePrestito;
 	}
 
-	public Date getRestituzioneEffettiva() {
+	public LocalDate getRestituzioneEffettiva() {
 		return restituzioneEffettiva;
 	}
 
-	public void setRestituzioneEffettiva(Date restituzioneEffettiva) {
+	public void setRestituzioneEffettiva(LocalDate restituzioneEffettiva) {
 		this.restituzioneEffettiva = restituzioneEffettiva;
 	}
 
-	@Override
-	public String toString() {
-		return String.format(
-				"Prestito [id=%s, utente=%s, catologoItem=%s, inizioPrestito=%s, restituzionePrestito=%s, restituzioneEffettiva=%s]",
-				id, utente, catologoItem, inizioPrestito, restituzionePrestito, restituzioneEffettiva);
-	}
+//	@Override
+//	public String toString() {
+//		return String.format(
+//				"Prestito [id=%s, utente=%s, catologoItem=%s, inizioPrestito=%s, restituzionePrestito=%s, restituzioneEffettiva=%s]",
+//				id, utente, catologoItem, inizioPrestito, restituzionePrestito, restituzioneEffettiva);
+//	}
 
 	
 
