@@ -21,6 +21,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "prestiti")
+@NamedQuery(name = "Prestito.SELECT_ELEMENTO_BY_TESSERA", 
+query = "SELECT p FROM Prestito p WHERE p.restituzioneEffettiva > :thirtydaysfromtoday ")
 //@NamedQuery(name = "Prestito.SELECT_ELEMENTO_BY_TESSERA", 
 //query = "SELECT p FROM Prestito p WHERE p.restituzionePrestito > :today ")
 public class Prestito {

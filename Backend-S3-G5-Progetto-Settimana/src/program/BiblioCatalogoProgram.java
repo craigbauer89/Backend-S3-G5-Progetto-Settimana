@@ -25,11 +25,6 @@ public class BiblioCatalogoProgram {
 public static void main(String[] args) {
 		
 	
-		
-//		Libro item1 = new Libro("122", "Amazing Places", 1996, 430, "Tim Lovejoy", "Action");
-//		Rivista item2 = new Rivista("522", "A Magazine",  2021, 29, Period.MENSILE);
-//		CatalogElementoDAO.inserisciLibro(item1);
-//		CatalogElementoDAO.inserisciRivista(item2);
 	
 	//Aggiunte di un Utente
 			List<Utente> utenti = new ArrayList<>();
@@ -124,33 +119,21 @@ public static void main(String[] args) {
 		titolo.stream().forEach(c -> log.info("I elementi di titolo che inizia con un A: {}", c));
 		
 //		7. Ricerca degli elementi attualmente in prestito dato un numero di tessera utente
-//		log.info("Elenco degli 	elementi attualmente in prestito dato un numero di tessera utente");
-//		var tessera = PrestitoDAO.ricercaPrestitoPerTessera(LocalDate.now());
-//		log.info("I elementi sono {}", tessera.size());
-//		tessera.stream().forEach(c -> log.info("Il elementi attualmente in prestito per la tessera BR827267 {}", c));
+
 		log.info("Elenco degli 	elementi attualmente in prestito dato un numero di tessera utente");
 		var tessera = CatalogElementoDAO.ricercaPrestitoPerTessera("BR209373", LocalDate.now());
 		log.info("I elementi sono {}", tessera.size());
 		tessera.stream().forEach(c -> log.info("Il elementi attualmente in prestito per la tessera BR209373: {}", c));
-//		8. Ricerca di tutti i prestiti scaduti e non ancora restituiti
-//		log.info("Elenco dei prestiti scaduti e non ancora restituiti");
 		
+//		8. Ricerca di tutti i prestiti scaduti e non ancora restituiti
+		log.info("Elenco dei prestiti scaduti e non ancora restituiti");
+		var prestitiscad = PrestitoDAO.ricercaPrestitoScaduti(LocalDate.of(2022, 9, 8));
+		log.info("I elementi sono {}", prestitiscad.size());
+		prestitiscad.stream().forEach(c -> log.info("Il prestiti scaduti: {}", c));
 	
 }
 		
-//		service.getAreas().forEach(a -> log.info("{}", a));
-//		log.info("Città in archivio: {} ", service.getCities().size());
-//		log.info("Recupero di città per provincia");
-//		var l = service.getCitiesByProvinceAcronym("BA");
-//		log.info("Citta in provincia di Bari (BA): {}", l.size());
-//		l.stream().forEach(c -> log.info("{}", c));
-//		log.info("Città in provincia di Bari con il nome che inizia per A: {}", // 
-//				service.getCitiesByProvinceAcronymAndNameContains("A%", "BA"));
-//		
-//		for(int i = 0; i < 3; ++i)
-//			log.info("Pagina n. {} delle province: {}", i, service.getProvincesByPages(i, 50));
-		
-		
+
 		
 }
 
