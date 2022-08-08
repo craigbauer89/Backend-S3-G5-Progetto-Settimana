@@ -61,20 +61,20 @@ public class PrestitoDAO {
 		em.close();
 	}
 	
-	public static List<Prestito> ricercaPrestitoScaduti(LocalDate thirtydaysfromtoday) {
-	EntityManager em = EntityManagerHelper.getEntityManager();
-	try {
-		log.debug("ricercaPrestitoPerTessera({})", thirtydaysfromtoday);
-		var query = em.createNamedQuery("Prestito.SELECT_ELEMENTO_BY_TESSERA", Prestito.class);
-		query.setParameter("thirtydaysfromtoday", thirtydaysfromtoday);
-		return query.getResultList();
-	} catch (Exception e) {
-		log.error("Error retrieving cities by province acronym", e);
-		return new ArrayList<>();
-	} finally {
-		em.close();
-	}
-}
+//	public static List<Prestito> ricercaPrestitoScaduti(LocalDate thirtydaysfromtoday) {
+//	EntityManager em = EntityManagerHelper.getEntityManager();
+//	try {
+//		log.debug("ricercaPrestitoPerTessera({})", thirtydaysfromtoday);
+//		var query = em.createNamedQuery("Prestito.SELECT_ELEMENTO_BY_TESSERA", Prestito.class);
+//		query.setParameter("thirtydaysfromtoday", thirtydaysfromtoday);
+//		return query.getResultList();
+//	} catch (Exception e) {
+//		log.error("Error retrieving cities by province acronym", e);
+//		return new ArrayList<>();
+//	} finally {
+//		em.close();
+//	}
+//}
 	
 //	public static List<Prestito> ricercaPrestitoPerTessera(LocalDate today) {
 //		EntityManager em = EntityManagerHelper.getEntityManager();

@@ -221,6 +221,22 @@ public class CatalogElementoDAO {
 		}
 	}
 	
+	public static List<CatalogElemento> ricercaPrestitoScaduti(LocalDate thirtydaysfromtoday) {
+		EntityManager em = EntityManagerHelper.getEntityManager();
+		try {
+			log.debug("ricercaPrestitoPerTessera({})", thirtydaysfromtoday);
+			var query = em.createNamedQuery("CatalogElemento.SELECT_ELEMENTO_BY_SCADUTA", CatalogElemento.class);
+			query.setParameter("thirtydaysfromtoday", thirtydaysfromtoday);
+			return query.getResultList();
+		} catch (Exception e) {
+			log.error("Error retrieving cities by province acronym", e);
+			return new ArrayList<>();
+		} finally {
+			em.close();
+		}
+		
+	}
+	
 //	ricercaperISBN(String ISBN)
 //	ricercaperanno(int anno)
 //	ricercaperautore(String autore)

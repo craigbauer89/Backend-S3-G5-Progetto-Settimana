@@ -24,7 +24,8 @@ import javax.persistence.Table;
 	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_ANNO", query = "SELECT c FROM CatalogElemento c WHERE c.annoPubblicato.annoPubblicato = :anno")
 	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_TITOLO", query = "SELECT c FROM CatalogElemento c WHERE c.titolo.titolo LIKE :titolo")
 	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_TESSERA", query = "SELECT c FROM CatalogElemento c WHERE c.prestito IN(SELECT p FROM Prestito p WHERE p.utente IN(SELECT u FROM Utente u WHERE u.numeroTessera = :tessera) AND p.restituzionePrestito > :today) ")
-
+	@NamedQuery(name = "CatalogElemento.SELECT_ELEMENTO_BY_SCADUTA", 
+	query = "SELECT c FROM CatalogElemento c WHERE c.prestito IN(SELECT p FROM Prestito p WHERE p.restituzioneEffettiva > :thirtydaysfromtoday)")
 		public abstract class CatalogElemento { //implements  {
 			
 //			private int id;
@@ -108,12 +109,7 @@ import javax.persistence.Table;
 				this.prestito = prestito;
 			}
 
-//			@Override
-//			public String toString() {
-//				return String.format(
-//						"CatologoItem [id=%s, codiceISBN=%s, titolo=%s, annoPubblicato=%s, numeroPagine=%s, prestito=%s]",
-//						id, codiceISBN, titolo, annoPubblicato, numeroPagine, prestito);
-//			}
+
 			
 			@Override
 			public String toString() {
@@ -124,66 +120,7 @@ import javax.persistence.Table;
 
 		
 			
-		
-	//
-//			 @Override
-//			public String toCsv() {
-//				// csv comune a tutti gli elementi:
-//				// isbn;titolo;anno di pubblicazione;pagine
-//				return String.format("%s;%s;%d;%d", isbn, title, publishedYear, pages);
-//			}
 
-//			/**
-//			 * Recupera la parte di propria competenza dal csv.
-//			 * 
-//			 * @param csv     il csv da leggere.
-//			 * @param startAt il campo da cui partire nella lettura.
-//			 * @return il campo a cui è arrivata la lettura.
-//			 */
-//			protected int fromCsv(String csv, int startAt) {
-//				String[] parts = csv.split(";");
-//				isbn = parts[startAt];
-//				title = parts[startAt + 1];
-//				publishedYear = Integer.parseInt(parts[startAt + 2]);
-//				pages = Integer.parseInt(parts[startAt + 3]);
-//				return 4 + startAt;
-//			}
-	//
-//			@Override
-//			public int fromCsv(String csv) {
-//				return fromCsv(csv, 0);
-//			}
-	//
-//			/**
-//			 * Uguaglianza tra oggetti della stessa classe e con medesimo
-//			 * {@code hashCode()}.
-//			 */
-//			@Override
-//			public boolean equals(Object obj) {
-//				return obj != null && obj.getClass().equals(getClass()) && obj.hashCode() == hashCode();
-//			}
-	//
-//			/**
-//			 * Hash code basato sul campo {@code isbn}.
-//			 */
-//			@Override
-//			public int hashCode() {
-//				return Objects.hash(isbn);
-//			}
-	//
-//			/**
-//			 * Ordinamento di default basato su codice ISBN.
-//			 * 
-//			 * @param other oggetto da confrontare.
-//			 * @return <strong>{@code -1}</strong> se {@code this} è minore di
-//			 *         {@code other}, <strong>{@code 0}</strong> se sono uguali,
-//			 *         <strong>{@code 1}</strong> se {@code other} è maggiore di
-//			 *         {@code this}.
-//			 */
-//			@Override
-//			public int compareTo(LibraryItem other) {
-//				return isbn.compareTo(other.isbn);
-//			}
 		}
 
 

@@ -127,7 +127,7 @@ public static void main(String[] args) {
 		
 //		8. Ricerca di tutti i prestiti scaduti e non ancora restituiti
 		log.info("Elenco dei prestiti scaduti e non ancora restituiti");
-		var prestitiscad = PrestitoDAO.ricercaPrestitoScaduti(LocalDate.of(2022, 9, 8));
+		var prestitiscad = CatalogElementoDAO.ricercaPrestitoScaduti(LocalDate.of(2022, 9, 8));
 		log.info("I elementi sono {}", prestitiscad.size());
 		prestitiscad.stream().forEach(c -> log.info("Il prestiti scaduti: {}", c));
 	

@@ -1,8 +1,6 @@
 package datamodels;
 
 
-import java.util.Date;
-
 
 
 import java.time.LocalDate;
@@ -21,8 +19,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "prestiti")
-@NamedQuery(name = "Prestito.SELECT_ELEMENTO_BY_TESSERA", 
-query = "SELECT p FROM Prestito p WHERE p.restituzioneEffettiva > :thirtydaysfromtoday ")
+//@NamedQuery(name = "Prestito.SELECT_ELEMENTO_BY_TESSERA", 
+//query = "SELECT p FROM Prestito p WHERE p.restituzioneEffettiva > :thirtydaysfromtoday ")
 //@NamedQuery(name = "Prestito.SELECT_ELEMENTO_BY_TESSERA", 
 //query = "SELECT p FROM Prestito p WHERE p.restituzionePrestito > :today ")
 public class Prestito {
@@ -31,7 +29,7 @@ public class Prestito {
 	private Utente utente;
 	private List<CatalogElemento> catologoItem;
 	private LocalDate inizioPrestito;
-	private LocalDate restituzionePrestito; // (calcolata automaticamente a 30 gg dalla data inizio prestito)
+	private LocalDate restituzionePrestito; 
 	private LocalDate restituzioneEffettiva;
 	
 	
@@ -110,13 +108,12 @@ public class Prestito {
 		this.restituzioneEffettiva = restituzioneEffettiva;
 	}
 
-//	@Override
-//	public String toString() {
-//		return String.format(
-//				"Prestito [id=%s, utente=%s, catologoItem=%s, inizioPrestito=%s, restituzionePrestito=%s, restituzioneEffettiva=%s]",
-//				id, utente, catologoItem, inizioPrestito, restituzionePrestito, restituzioneEffettiva);
-//	}
+	@Override
+	public String toString() {
+		return "Prestito ID: [id=" + id + "]";
+	}
 
+	
 	
 
 }
